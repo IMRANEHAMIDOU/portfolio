@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Hamidou Souley Imrane - Développeur Web & Mobile Full Stack spécialisé en Laravel, Vue.js, React et Flutter. Expert en conception d'applications performantes et scalables.">
+    <meta name="keywords" content="Développeur Web, Laravel, Vue.js, React, Flutter, Full Stack, Niger, Niamey">
+    <meta name="author" content="Hamidou Souley Imrane">
+    <title>Hamidou Souley Imrane - Développeur Web & Mobile</title>
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://imranehamidou.github.io/portfolio/">
+    <meta property="og:title" content="Hamidou Souley Imrane - Développeur Web & Mobile">
+    <meta property="og:description"
+        content="Développeur Web & Mobile Full Stack spécialisé en Laravel, Vue.js, React et Flutter. Expert en conception d'applications performantes et scalables.">
+    <meta property="og:image" content="https://imranehamidou.github.io/portfolio/images/profile.jpeg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://imranehamidou.github.io/portfolio/">
+    <meta property="twitter:title" content="Hamidou Souley Imrane - Développeur Web & Mobile">
+    <meta property="twitter:description"
+        content="Développeur Web & Mobile Full Stack spécialisé en Laravel, Vue.js, React et Flutter. Expert en conception d'applications performantes et scalables.">
+    <meta property="twitter:image" content="https://imranehamidou.github.io/portfolio/images/profile.jpeg">
+
+    <!-- Favicon -->
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563EB',
+                        dark: '#0F172A',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Custom animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fadeInUp {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        /* Stagger animation delays */
+        .delay-100 {
+            animation-delay: 0.1s;
+        }
+
+        .delay-200 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-300 {
+            animation-delay: 0.3s;
+        }
+
+        .delay-400 {
+            animation-delay: 0.4s;
+        }
+
+        /* Gradient text */
+        .gradient-text {
+            background: linear-gradient(135deg, #2563EB 0%, #7C3AED 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Card hover effect */
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card-hover:hover {
+            transform: translateY(-8px);
+        }
+
+        /* Timeline line */
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #2563EB, #7C3AED);
+            transform: translateX(-50%);
+        }
+
+        @media (max-width: 768px) {
+            .timeline-line::before {
+                left: 20px;
+            }
+        }
+
+        /* Profile image styling */
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        /* Project image styling */
+        .project-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+
+<body class="bg-white dark:bg-dark text-gray-900 dark:text-gray-100 transition-colors duration-300">
+
+    <!-- Navigation -->
+    <nav
+        class="fixed top-0 w-full bg-white/80 dark:bg-dark/80 backdrop-blur-md z-50 border-b border-gray-200 dark:border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="#" class="text-xl font-bold gradient-text">HS Imrane</a>
+
+                <div class="hidden md:flex space-x-8">
+                    <a href="#about" class="hover:text-primary dark:hover:text-blue-400 transition-colors">À propos</a>
+                    <a href="#projects"
+                        class="hover:text-primary dark:hover:text-blue-400 transition-colors">Projets</a>
+                    <a href="#experience"
+                        class="hover:text-primary dark:hover:text-blue-400 transition-colors">Expérience</a>
+                    <a href="#contact" class="hover:text-primary dark:hover:text-blue-400 transition-colors">Contact</a>
+                </div>
+
+                <!-- Dark Mode Toggle -->
+                <button id="theme-toggle"
+                    class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                    <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                    </svg>
+                    <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                            d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="min-h-screen flex items-center justify-center pt-16 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto text-center">
+            <!-- Avatar -->
+            <div class="mb-8 animate-fadeInUp">
+                <div
+                    class="w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 mx-auto rounded-full bg-gradient-to-br from-primary to-purple-600 p-1.5">
+                    <div
+                        class="w-full h-full rounded-full bg-white dark:bg-dark flex items-center justify-center overflow-hidden">
+                        <img src="images/profile.jpeg" alt="Hamidou Souley Imrane" class="profile-img"
+                            onerror="this.style.display='none'; this.parentElement.innerHTML='👨‍💻';">
+                    </div>
+                </div>
+            </div>
+
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 animate-fadeInUp delay-100">
+                Hamidou Souley <span class="gradient-text">Imrane</span>
+            </h1>
+
+            <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-400 mb-6 animate-fadeInUp delay-200">
+                Développeur Web & Mobile Full Stack
+            </p>
+
+            <p
+                class="text-lg md:text-xl text-gray-500 dark:text-gray-500 mb-8 max-w-2xl mx-auto animate-fadeInUp delay-300">
+                Transformer les idées en solutions digitales performantes et scalables
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center animate-fadeInUp delay-400">
+                <a href="#contact"
+                    class="px-8 py-4 bg-primary hover:bg-blue-700 text-white rounded-lg font-semibold transition-all hover:scale-105 shadow-lg hover:shadow-xl">
+                    Me contacter
+                </a>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div class="mt-16 animate-bounce">
+                <svg class="w-6 h-6 mx-auto text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-900">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">À propos de moi</h2>
+            <div class="w-20 h-1 bg-gradient-to-r from-primary to-purple-600 mx-auto mb-12"></div>
+
+            <div class="grid md:grid-cols-2 gap-12 items-start">
+                <div class="space-y-6">
+                    <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                        Ingénieur en Génie Logiciel actuellement en <strong>Master 2</strong> à l'IAT Niamey, je me
+                        spécialise dans le développement d'applications web et mobiles performantes.
+                    </p>
+                    <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                        Avec plus de <strong>4 ans d'expérience</strong>, j'ai conçu et déployé plusieurs systèmes de
+                        gestion pour des institutions au Niger, incluant des solutions complètes pour la gestion
+                        scolaire, du personnel et de production.
+                    </p>
+                    <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                        Actuellement <strong>Chef du Service Informatique à UST-NIGER</strong>, je développe et
+                        maintiens des logiciels critiques utilisés quotidiennement par des centaines d'utilisateurs.
+                    </p>
+
+                    <div class="flex gap-4 pt-4">
+                        <a href="https://github.com/IMRANEHAMIDOU/" target="_blank"
+                            class="p-3 bg-white dark:bg-gray-800 rounded-lg hover:scale-110 transition-transform shadow-md">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                            </svg>
+                        </a>
+                        <a href="https://www.linkedin.com/in/imrane-hamidou-souley-a6a25a319" target="_blank"
+                            class="p-3 bg-white dark:bg-gray-800 rounded-lg hover:scale-110 transition-transform shadow-md">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                            </svg>
+                        </a>
+                        <a href="https://wa.me/22786420943" target="_blank"
+                            class="p-3 bg-white dark:bg-gray-800 rounded-lg hover:scale-110 transition-transform shadow-md">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-semibold mb-6">Compétences techniques</h3>
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="font-semibold mb-3 text-gray-700 dark:text-gray-300">Langages & Frameworks</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span
+                                    class="px-4 py-2 bg-white dark:bg-gray-800 rounded-full text-sm font-medium shadow-sm">Laravel</span>
+                                <span
+                                    class="px-4 py-2 bg-white dark:bg-gray-800 rounded-full text-sm font-medium shadow-sm">Ruby
+                                    on Rails</span>
+                                <span
+                                    class="px-4 py-2 bg-white dark:bg-gray-800 rounded-full text-sm font-medium shadow-sm">Django</span>
+                                <span
+                                    class="px-4 py-2 bg-white dark:bg-gray-800 rounded-full text-sm font-medium shadow-sm">PHP</span>
+                                <span
+                                    class="px-4 py-2 bg-white dark:bg-gray-800 rounded-full text-sm font-medium shadow-sm">JavaScript</span>
+                                <span
+                                    class="px-4 py-2 bg-white dark:bg-gray-800 rounded-full text-sm font-medium shadow-sm">Python</span>
+                                <span
+                                    class="px-4 py-2 bg-white dark:bg-gray-800 rounded-full text-sm font-medium shadow-sm">Java</span>
+                                <span
+                                    class="px-4 py-2 bg-white dark:bg-gray-800 rounded-full text-sm font-medium shadow-sm">Ruby</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h4 class="font-semibold mb-3 text-gray-700 dark:text-gray-300">Frontend</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span
+                                    class="px-4 py-2 bg-white dark:bg-gray-800 rounded-full text-sm font-medium shadow-sm">HTML/CSS</span>
+                                <span
+                                    class="px-4 py-2 bg-white dark:bg-gray-800 rounded-full text-sm font-medium shadow-sm">Bootstrap</span>
+                                <span
+                                    class="px-4 py-2 bg-white dark:bg-gray-800 rounded-full text-sm font-medium shadow-sm">Tailwind
+                                    CSS</span>
+                                <span
+                                    class="px-4 py-2 bg-white dark:bg-gray-800 rounded-full text-sm font-medium shadow-sm">Vue.js</span>
+                                <span
+                                    class="px-4 py-2 bg-white dark:bg-gray-800 rounded-full text-sm font-medium shadow-sm">React</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h4 class="font-semibold mb-3 text-gray-700 dark:text-gray-300">Bases de données & Outils
+                            </h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span
+                                    class="px-4 py-2 bg-white dark:bg-gray-800 rounded-full text-sm font-medium shadow-sm">MySQL</span>
+                                <span
+                                    class="px-4 py-2 bg-white dark:bg-gray-800 rounded-full text-sm font-medium shadow-sm">SQL</span>
+                                <span
+                                    class="px-4 py-2 bg-white dark:bg-gray-800 rounded-full text-sm font-medium shadow-sm">WINDEV</span>
+                                <span
+                                    class="px-4 py-2 bg-white dark:bg-gray-800 rounded-full text-sm font-medium shadow-sm">Git</span>
+                                <span
+                                    class="px-4 py-2 bg-white dark:bg-gray-800 rounded-full text-sm font-medium shadow-sm">API
+                                    REST</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Projets réalisés</h2>
+            <div class="w-20 h-1 bg-gradient-to-r from-primary to-purple-600 mx-auto mb-12"></div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg card-hover">
+                    <div class="h-48 bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center overflow-hidden">
+                        <img src="images/ust-niger.png" alt="Système de Gestion UST-NIGER" class="project-img"
+                            onerror="this.style.display='none'; this.parentElement.innerHTML='🎓'; this.parentElement.classList.add('text-white', 'text-6xl');">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Système de Gestion UST-NIGER</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">
+                            Plateforme complète de gestion des inscriptions, versements, notes, bulletins et diplômes.
+                            Opérationnelle depuis 2 ans.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span
+                                class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-xs">WINDEV
+                                25</span>
+                            <span
+                                class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-xs">SQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg card-hover">
+                    <div class="h-48 bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center overflow-hidden">
+                        <img src="images/saraounia.jpg" alt="Saraounia Shop" class="project-img"
+                            onerror="this.style.display='none'; this.parentElement.innerHTML='🛒'; this.parentElement.classList.add('text-white', 'text-6xl');">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Saraounia Shop</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">
+                            Marketplace moderne au Niger permettant aux commerçants locaux de vendre en ligne. J'ai contribué activement au développement avec intégration frontend, implémentation de fonctionnalités clés côté backend, optimisation de l'interface utilisateur et résolution de bugs critiques.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span
+                                class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-full text-xs">Ruby on Rails</span>
+                            <span
+                                class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-full text-xs">Tailwind CSS</span>
+                        </div>
+                        <div class="flex gap-2">
+                            <a href="https://www.sarraounia.shop/" target="_blank"
+                                class="flex-1 text-center py-2 bg-primary hover:bg-blue-700 text-white rounded-lg transition-colors text-sm">
+                                Visiter le site
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg card-hover">
+                    <div class="h-48 bg-gradient-to-br from-yellow-500 to-amber-600 flex items-center justify-center overflow-hidden">
+                        <img src="images/solani.png" alt="Système SOLANI" class="project-img"
+                            onerror="this.style.display='none'; this.parentElement.innerHTML='🥛'; this.parentElement.classList.add('text-white', 'text-6xl');">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Système SOLANI</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">
+                            Système d'information complet pour la Société de Lait du Niger avec gestion de production et
+                            ventes.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span
+                                class="px-3 py-1 bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 rounded-full text-xs">WINDEV
+                                25</span>
+                            <span
+                                class="px-3 py-1 bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 rounded-full text-xs">SQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg card-hover">
+                    <div class="h-48 bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center overflow-hidden">
+                        <img src="images/laiterie-sahel.png" alt="LA LAITERIE DU SAHEL" class="project-img"
+                            onerror="this.style.display='none'; this.parentElement.innerHTML='🧀'; this.parentElement.classList.add('text-white', 'text-6xl');">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">LA LAITERIE DU SAHEL</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">
+                            Logiciel de gestion intégrale de la production à la vente pour une laiterie moderne.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span
+                                class="px-3 py-1 bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 rounded-full text-xs">WINDEV
+                                25</span>
+                            <span
+                                class="px-3 py-1 bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 rounded-full text-xs">SQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg card-hover">
+                    <div class="h-48 bg-gradient-to-br from-pink-500 to-rose-600 flex items-center justify-center overflow-hidden">
+                        <img src="images/formation-ifutur.png" alt="Formation IFutur" class="project-img"
+                            onerror="this.style.display='none'; this.parentElement.innerHTML='💼'; this.parentElement.classList.add('text-white', 'text-6xl');">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Formation IFutur</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">
+                            Formation intensive en développement web moderne avec les dernières technologies frontend et
+                            backend.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span
+                                class="px-3 py-1 bg-pink-100 dark:bg-pink-900 text-pink-800 dark:text-pink-200 rounded-full text-xs">Vue.js</span>
+                            <span
+                                class="px-3 py-1 bg-pink-100 dark:bg-pink-900 text-pink-800 dark:text-pink-200 rounded-full text-xs">React</span>
+                            <span
+                                class="px-3 py-1 bg-pink-100 dark:bg-pink-900 text-pink-800 dark:text-pink-200 rounded-full text-xs">Node.js</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-900">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Parcours professionnel</h2>
+            <div class="w-20 h-1 bg-gradient-to-r from-primary to-purple-600 mx-auto mb-12"></div>
+
+            <!-- Timeline -->
+            <div class="relative timeline-line">
+                <!-- Experience 1 -->
+                <div class="mb-12 md:flex md:justify-between md:items-center">
+                    <div class="md:w-5/12 md:text-right md:pr-8">
+                        <div class="mb-4 md:mb-0">
+                            <h3 class="text-xl font-bold">Chef Service Informatique</h3>
+                            <p class="text-primary dark:text-blue-400 font-semibold">UST-NIGER</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Oct 2024 - Aujourd'hui</p>
+                        </div>
+                    </div>
+                    <div class="hidden md:flex md:w-2/12 justify-center">
+                        <div
+                            class="w-8 h-8 bg-primary rounded-full border-4 border-white dark:border-dark shadow-lg flex items-center justify-center">
+                            <div class="w-3 h-3 bg-white rounded-full"></div>
+                        </div>
+                    </div>
+                    <div class="md:w-5/12 md:pl-8 mt-4 md:mt-0">
+                        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+                            <p class="text-gray-600 dark:text-gray-400">
+                                Développement et maintenance d'un système complet de gestion scolaire incluant
+                                inscriptions, versements, notes, bulletins et génération automatique de diplômes.
+                                Solution performante utilisée quotidiennement.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience 2 -->
+                <div class="mb-12 md:flex md:justify-between md:items-center md:flex-row-reverse">
+                    <div class="md:w-5/12 md:text-left md:pl-8">
+                        <div class="mb-4 md:mb-0">
+                            <h3 class="text-xl font-bold">Formation Développement Web</h3>
+                            <p class="text-primary dark:text-blue-400 font-semibold">IFutur</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Fév 2025 - Juil 2025</p>
+                        </div>
+                    </div>
+                    <div class="hidden md:flex md:w-2/12 justify-center">
+                        <div
+                            class="w-8 h-8 bg-primary rounded-full border-4 border-white dark:border-dark shadow-lg flex items-center justify-center">
+                            <div class="w-3 h-3 bg-white rounded-full"></div>
+                        </div>
+                    </div>
+                    <div class="md:w-5/12 md:pr-8 mt-4 md:mt-0">
+                        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+                            <p class="text-gray-600 dark:text-gray-400">
+                                Formation intensive en développement web moderne avec focus sur les frameworks
+                                JavaScript (Vue.js, React), Node.js et les meilleures pratiques de développement
+                                full-stack.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience 3 -->
+                <div class="mb-12 md:flex md:justify-between md:items-center">
+                    <div class="md:w-5/12 md:text-right md:pr-8">
+                        <div class="mb-4 md:mb-0">
+                            <h3 class="text-xl font-bold">Stagiaire</h3>
+                            <p class="text-primary dark:text-blue-400 font-semibold">INS-NIGER</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Oct 2023 - Avr 2024</p>
+                        </div>
+                    </div>
+                    <div class="hidden md:flex md:w-2/12 justify-center">
+                        <div
+                            class="w-8 h-8 bg-primary rounded-full border-4 border-white dark:border-dark shadow-lg flex items-center justify-center">
+                            <div class="w-3 h-3 bg-white rounded-full"></div>
+                        </div>
+                    </div>
+                    <div class="md:w-5/12 md:pl-8 mt-4 md:mt-0">
+                        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+                            <p class="text-gray-600 dark:text-gray-400">
+                                Conception d'un logiciel avec WINDEV 25 pour la gestion complète des scolarités
+                                (inscriptions, versements, bulletins) pour l'Université des Sciences et Technologies du
+                                Niger.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience 4 -->
+                <div class="mb-12 md:flex md:justify-between md:items-center md:flex-row-reverse">
+                    <div class="md:w-5/12 md:text-left md:pl-8">
+                        <div class="mb-4 md:mb-0">
+                            <h3 class="text-xl font-bold">Volontaire</h3>
+                            <p class="text-primary dark:text-blue-400 font-semibold">IEFA/NY3</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Sep 2022 - Jan 2023</p>
+                        </div>
+                    </div>
+                    <div class="hidden md:flex md:w-2/12 justify-center">
+                        <div
+                            class="w-8 h-8 bg-primary rounded-full border-4 border-white dark:border-dark shadow-lg flex items-center justify-center">
+                            <div class="w-3 h-3 bg-white rounded-full"></div>
+                        </div>
+                    </div>
+                    <div class="md:w-5/12 md:pr-8 mt-4 md:mt-0">
+                        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+                            <p class="text-gray-600 dark:text-gray-400">
+                                Conception d'un logiciel de gestion du personnel pour l'Inspection des Enseignements
+                                Franco-Arabe Niamey 3. Développement complet de A à Z.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience 5 -->
+                <div class="md:flex md:justify-between md:items-center">
+                    <div class="md:w-5/12 md:text-right md:pr-8">
+                        <div class="mb-4 md:mb-0">
+                            <h3 class="text-xl font-bold">Stagiaire</h3>
+                            <p class="text-primary dark:text-blue-400 font-semibold">Ministère des Finances</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Jan 2020 - Avr 2020</p>
+                        </div>
+                    </div>
+                    <div class="hidden md:flex md:w-2/12 justify-center">
+                        <div
+                            class="w-8 h-8 bg-primary rounded-full border-4 border-white dark:border-dark shadow-lg flex items-center justify-center">
+                            <div class="w-3 h-3 bg-white rounded-full"></div>
+                        </div>
+                    </div>
+                    <div class="md:w-5/12 md:pl-8 mt-4 md:mt-0">
+                        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+                            <p class="text-gray-600 dark:text-gray-400">
+                                Conception d'une application Access pour la gestion efficace des courriers de la
+                                Direction de la Législation. Automatisation du suivi et de l'archivage.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Formation Section -->
+            <div class="mt-20">
+                <h3 class="text-2xl md:text-3xl font-bold text-center mb-8">Formation académique</h3>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="w-12 h-12 bg-gradient-to-br from-primary to-purple-600 rounded-lg flex items-center justify-center text-white text-xl flex-shrink-0">
+                                🎓
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">Master 2 - Génie Logiciel</h4>
+                                <p class="text-primary dark:text-blue-400">IAT Niamey</p>
+                                <p class="text-sm text-gray-500">2024 - 2025</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="w-12 h-12 bg-gradient-to-br from-primary to-purple-600 rounded-lg flex items-center justify-center text-white text-xl flex-shrink-0">
+                                🎓
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">Master 1 - Génie Logiciel</h4>
+                                <p class="text-primary dark:text-blue-400">IAT Niamey</p>
+                                <p class="text-sm text-gray-500">2023 - 2024</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="w-12 h-12 bg-gradient-to-br from-green-500 to-teal-600 rounded-lg flex items-center justify-center text-white text-xl flex-shrink-0">
+                                🎓
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">Licence - Génie Informatique</h4>
+                                <p class="text-green-600 dark:text-green-400">UST-NIGER • Mention Bien</p>
+                                <p class="text-sm text-gray-500">2020 - 2023</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="w-12 h-12 bg-gradient-to-br from-orange-500 to-amber-600 rounded-lg flex items-center justify-center text-white text-xl flex-shrink-0">
+                                📚
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">BAC PRO - Informatique de Gestion</h4>
+                                <p class="text-orange-600 dark:text-orange-400">CET-ASNI Niamey</p>
+                                <p class="text-sm text-gray-500">2019 - 2020</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Contactez-moi</h2>
+            <div class="w-20 h-1 bg-gradient-to-r from-primary to-purple-600 mx-auto mb-12"></div>
+
+            <div class="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+                <!-- Contact Info -->
+                <div class="space-y-6">
+                    <p class="text-lg text-gray-600 dark:text-gray-400">
+                        Je suis disponible pour des missions freelance, des collaborations ou des opportunités d'emploi.
+                        N'hésitez pas à me contacter !
+                    </p>
+
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                            <div
+                                class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary text-xl">
+                                📧
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">Email</p>
+                                <a href="mailto:hamidousouleyimrane@gmail.com"
+                                    class="font-semibold hover:text-primary transition-colors">
+                                    hamidousouleyimrane@gmail.com
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                            <div
+                                class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary text-xl">
+                                📱
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">Téléphone</p>
+                                <div>
+                                    <a href="tel:+22786420943"
+                                        class="font-semibold hover:text-primary transition-colors block">
+                                        +227 86 42 09 43
+                                    </a>
+                                    <a href="tel:+22785147413"
+                                        class="font-semibold hover:text-primary transition-colors block">
+                                        +227 85 14 74 13
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                            <div
+                                class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary text-xl">
+                                📍
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">Localisation</p>
+                                <p class="font-semibold">Niamey, Niger</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-6">
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">Suivez-moi sur</p>
+                        <div class="flex gap-4">
+                            <a href="https://github.com/IMRANEHAMIDOU/" target="_blank"
+                                class="w-12 h-12 bg-gray-50 dark:bg-gray-800 hover:bg-primary hover:text-white rounded-lg flex items-center justify-center transition-all hover:scale-110 shadow-md">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                                </svg>
+                            </a>
+                            <a href="https://www.linkedin.com/in/imrane-hamidou-souley-a6a25a319" target="_blank"
+                                class="w-12 h-12 bg-gray-50 dark:bg-gray-800 hover:bg-primary hover:text-white rounded-lg flex items-center justify-center transition-all hover:scale-110 shadow-md">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                                </svg>
+                            </a>
+                            <a href="https://wa.me/22786420943" target="_blank"
+                                class="w-12 h-12 bg-gray-50 dark:bg-gray-800 hover:bg-primary hover:text-white rounded-lg flex items-center justify-center transition-all hover:scale-110 shadow-md">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div>
+                    <form class="space-y-6" onsubmit="handleSubmit(event)">
+                        <div>
+                            <label for="name" class="block text-sm font-medium mb-2">Nom complet</label>
+                            <input type="text" id="name" required
+                                class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all">
+                        </div>
+
+                        <div>
+                            <label for="email" class="block text-sm font-medium mb-2">Email</label>
+                            <input type="email" id="email" required
+                                class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all">
+                        </div>
+
+                        <div>
+                            <label for="message" class="block text-sm font-medium mb-2">Message</label>
+                            <textarea id="message" rows="5" required
+                                class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all resize-none"></textarea>
+                        </div>
+
+                        <button type="submit"
+                            class="w-full px-8 py-4 bg-primary hover:bg-blue-700 text-white rounded-lg font-semibold transition-all hover:scale-105 shadow-lg hover:shadow-xl">
+                            Envoyer le message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 py-8 px-4">
+        <div class="max-w-7xl mx-auto text-center">
+            <p class="text-gray-600 dark:text-gray-400">
+                © 2025 Hamidou Souley Imrane. Tous droits réservés.
+            </p>
+            <p class="text-sm text-gray-500 dark:text-gray-500 mt-2">
+                Développé avec ❤️ à Niamey, Niger
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Dark mode toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const darkIcon = document.getElementById('theme-toggle-dark-icon');
+        const lightIcon = document.getElementById('theme-toggle-light-icon');
+
+        // Check for saved theme preference or default to system preference
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            lightIcon.classList.remove('hidden');
+        } else {
+            darkIcon.classList.remove('hidden');
+        }
+
+        themeToggle.addEventListener('click', function () {
+            // Toggle icons
+            darkIcon.classList.toggle('hidden');
+            lightIcon.classList.toggle('hidden');
+
+            // Toggle dark mode
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('color-theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('color-theme', 'dark');
+            }
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission handler
+        function handleSubmit(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            // Create mailto link
+            const mailtoLink = `mailto:hamidousouleyimrane@gmail.com?subject=Message de ${encodeURIComponent(name)}&body=${encodeURIComponent(message)}%0D%0A%0D%0ADe: ${encodeURIComponent(email)}`;
+
+            window.location.href = mailtoLink;
+
+            // Optional: Show success message
+            alert('Votre client email va s\'ouvrir. Merci !');
+        }
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections for animation
+        document.querySelectorAll('section > div').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            observer.observe(section);
+        });
+
+        // Add active nav link highlighting on scroll
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('nav a[href^="#"]');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('text-primary', 'dark:text-blue-400');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('text-primary', 'dark:text-blue-400');
+                }
+            });
+        });
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.getElementById('hero');
+            if (hero && scrolled < window.innerHeight) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+                hero.style.opacity = 1 - (scrolled / window.innerHeight) * 0.5;
+            }
+        });
+    </script>
+</body>
+
+</html>
+
